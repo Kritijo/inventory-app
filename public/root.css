@@ -1,0 +1,42 @@
+:root {
+  --bodybglight: #ffffff;
+  --bodybgdark: #242424;
+  --headerbglight: rgb(237, 237, 237);
+  --headerbgdark: #333;
+  --inputbglight: var(--headerbglight);
+  --inputbgdark: var(--headerbgdark);
+  --shadow: 2px 2px 2px rgba(51, 51, 51, 0.2);
+  --bttnbg: rgb(127, 164, 53);
+  --colorlight: #232323;
+  --colordark: rgba(255, 255, 255, 0.87);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --color: var(--colorlight);
+  --bgColor: var(--bodybglight);
+  background-color: var(--bgColor);
+  --headerbg: var(--headerbglight);
+  --inputbg: var(--inputbglight);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+:root.dark {
+  --color: var(--colordark);
+  --bgColor: var(--bodybgdark);
+  --headerbg: var(--headerbgdark);
+  --inputbg: var(--headerbgdark);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  color: var(--color);
+}
+
+body {
+  min-height: 100vh;
+}
