@@ -1,0 +1,10 @@
+<h3>Genres ⭐️</h3>
+<form class="add-form" action="/newGenre" method="POST">
+  <input name="name" required />
+  <button>Add a Genre</button>
+</form>
+<ul>
+  <% genres.forEach(genre => { %>
+  <li>• <%= genre.name %></li>
+  <% }) %>
+</ul>

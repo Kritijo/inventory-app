@@ -1,0 +1,14 @@
+<script>
+  const title = "<%= book.title.toLowerCase().trim().replace(/"/g, '\\"') %>";
+  const img = document.getElementById("book-cover");
+
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(title)}`)
+    .then(res => res.json())
+    .then(data => {
+      const thumbnail = data?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
+      img.src = thumbnail || "https://via.placeholder.com/300x450?text=No+Cover";
+    })
+    .catch(() => {
+      img.src = "https://via.placeholder.com/300x450?text=Error+Fetching+Image";
+    });
+</script>

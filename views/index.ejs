@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/container.css" />
+    <title>Inventory app</title>
+  </head>
+  <body>
+    <header>
+      <h1>Book Inventory 📚</h1>
+      <button id="theme-toggle" aria-label="Toggle theme">☀️</button>
+    </header>
+    <main>
+      <form class="search-form" method="GET" action="\search">
+        <input name="name" />
+        <button>Search</button>
+      </form>
+      <div class="container">
+        <div><%- include("books", {books})%></div>
+        <div><%- include("genres", {genres})%></div>
+      </div>
+    </main>
+    <%- include("partials/theme.ejs") %>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Details</title>
+    <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/bookDetails.css" />
+  </head>
+  <body>
+    <h1><%= book.title %></h1>
+
+    <img id="book-cover" alt="Book cover" />
+
+    <p>Author: <%= book.author || "Unknown Author" %></p>
+    <p>Description: <%= book.desc || "No description available." %></p>
+    <p>
+      Added: <%= book.added.toLocaleDateString('en-US', { year: 'numeric',
+      month: 'short', day: 'numeric' }) %>
+    </p>
+
+    <button>Update Details</button>
+    <form
+      action="/deletebook/<%= book.id %>"
+      method="POST"
+      style="display: inline"
+    >
+      <button
+        onclick="return confirm('Are you sure you want to delete <%= book.title %>?')"
+        type="submit"
+      >
+        Delete book
+      </button>
+    </form>
+    <%- include("partials/theme.ejs") %> <%- include("partials/fetchImg.ejs") %>
+  </body>
+</html>

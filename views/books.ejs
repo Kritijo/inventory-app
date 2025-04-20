@@ -1,0 +1,13 @@
+<h3>All Books 📕</h3>
+<form class="add-form" action="/newbook" method="POST">
+  <input name="title" required />
+  <button>Add a book</button>
+</form>
+<ul>
+  <% books.forEach(book => { %>
+  <li>
+    ‣
+    <a href="/book/<%=book.id%>"> <%= book.title %></a>
+  </li>
+  <% }) %>
+</ul>
