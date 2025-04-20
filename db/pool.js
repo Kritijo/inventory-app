@@ -5,7 +5,5 @@ module.exports = new Pool({
     connectionString: isProduction
         ? process.env.DB_URL
         : process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false, 
-    },
+    ssl: isProduction ? { rejectUnauthorized: false } : false,
 });
