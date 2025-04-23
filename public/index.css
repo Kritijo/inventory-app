@@ -14,6 +14,7 @@ h1 {
   align-self: center;
   background: none;
   border: none;
+  box-shadow: none;
   font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -29,9 +30,7 @@ h1 {
   font-size: 16px;
 }
 .search-form > input {
-  max-width: 600px;
-  width: 300px;
-  min-width: 100px;
+  width: 50%;
   padding: 5px 10px;
   font-size: 1rem;
   border-radius: 5px;
@@ -43,7 +42,7 @@ h1 {
 :root.dark .search-form > input {
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
-.search-form > button {
+button {
   padding: 10px 15px;
   border-radius: 5px;
   border: none;
@@ -52,9 +51,6 @@ h1 {
   color: white;
   font-weight: 600;
   cursor: pointer;
-}
-:root.dark .search-form > button {
-  background-color: cornflowerblue;
 }
 
 .container {
@@ -71,10 +67,8 @@ h1 {
   main {
     margin: 20px;
   }
-  form > input {
-    width: 180px;
-  }
   .container {
+    grid-template-columns: 1fr;
     margin: 50px 0px;
     font-size: small;
   }

@@ -6,7 +6,8 @@
   --inputbglight: var(--headerbglight);
   --inputbgdark: var(--headerbgdark);
   --shadow: 2px 2px 2px rgba(51, 51, 51, 0.2);
-  --bttnbg: rgb(127, 164, 53);
+  --bttnbglight: rgb(127, 164, 53);
+  --bttnbgdark: cornflowerblue;
   --colorlight: #232323;
   --colordark: rgba(255, 255, 255, 0.87);
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -18,6 +19,7 @@
   background-color: var(--bgColor);
   --headerbg: var(--headerbglight);
   --inputbg: var(--inputbglight);
+  --bttnbg: var(--bttnbglight);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,12 +31,17 @@
   --bgColor: var(--bodybgdark);
   --headerbg: var(--headerbgdark);
   --inputbg: var(--headerbgdark);
+  --bttnbg: var(--bttnbgdark);
 }
 
 * {
   padding: 0;
   margin: 0;
   color: var(--color);
+}
+
+button:hover {
+  background-color: cadetblue;
 }
 
 body {

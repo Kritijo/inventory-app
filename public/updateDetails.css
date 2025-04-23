@@ -1,13 +1,32 @@
-* {
-  color: var(--color);
+#update-form {
+  min-width: 250px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: var(--bgColor);
+  border-radius: 20px;
+  box-shadow: 0 0 10px var(--color);
+  z-index: 10;
+  animation: animateDiv 0.3s ease forwards;
 }
 
-body {
-  height: 100vh;
+@keyframes animateDiv {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 20%;
+  }
 }
 
-form {
-  padding: 20px;
+.hidden {
+  display: none;
+  animation: none;
+}
+
+#update-form > form {
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +39,7 @@ label {
 }
 
 input {
-  width: 50%;
+  width: 100%;
   padding: 5px 10px;
   font-size: 1rem;
   border-radius: 5px;
@@ -32,13 +51,6 @@ input {
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-button {
+#update-form button {
   margin-top: 20px;
-  background-color: var(--bttnbg);
-  padding: 10px 15px;
-  border-radius: 5px;
-  box-shadow: var(--shadow);
-  color: white;
-  font-weight: 600;
-  border: none;
 }

@@ -1,14 +1,34 @@
 <script>
   const title = "<%= book.title.toLowerCase().trim().replace(/"/g, '\\"') %>";
+  const author = "<%= book.author ? book.author.toLowerCase().trim().replace(/"/g, '\\"') : '' %>";
+
   const img = document.getElementById("book-cover");
 
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(title)}`)
+  let query = `intitle:${encodeURIComponent(title)}`;
+  if (author) {
+    query += `+inauthor:${encodeURIComponent(author)}`;
+  }
+
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
+  fetch(url)
     .then(res => res.json())
     .then(data => {
+
       const thumbnail = data?.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
-      img.src = thumbnail || "https://via.placeholder.com/300x450?text=No+Cover";
+
+      if (!thumbnail) {
+        img.src = "https://placehold.co/300x450?text=No+Cover";
+        return;
+      }
+
+      const url = new URL(thumbnail);
+      url.protocol = 'https:';
+      url.searchParams.set('zoom', '3');
+      const newThumbnailURL = url.toString();
+
+      img.src = newThumbnailURL;
     })
     .catch(() => {
-      img.src = "https://via.placeholder.com/300x450?text=Error+Fetching+Image";
+      img.src = "https://placehold.co/300x450?text=Error+Fetching+Image";
     });
 </script>

@@ -6,22 +6,27 @@
     <title>Book Details</title>
     <link rel="stylesheet" href="/root.css" />
     <link rel="stylesheet" href="/bookDetails.css" />
+    <link rel="stylesheet" href="/updateDetails.css" />
   </head>
   <body>
     <h1><%= book.title %></h1>
 
     <img id="book-cover" alt="Book cover" />
 
-    <p>Author: <%= book.author || "Unknown Author" %></p>
-    <p>Description: <%= book.desc || "No description available." %></p>
+    <p><strong>Author:</strong> <%= book.author || "Unknown Author" %></p>
+    <p><strong>Description:</strong> 
+      <%= book.description || "No description available." %></p>
     <p>
-      Added: <%= book.added.toLocaleDateString('en-US', { year: 'numeric',
-      month: 'short', day: 'numeric' }) %>
+      <strong>Added:</strong> <%= book.added.toLocaleDateString('en-US', { year:
+      'numeric', month: 'short', day: 'numeric' }) %>
     </p>
 
-    <button>Update Details</button>
+    <button class="bttn-1" onclick="showForm()">
+      Update Details
+    </button>
+
     <form
-      action="/deletebook/<%= book.id %>"
+      action="/book/<%= book.id %>/delete"
       method="POST"
       style="display: inline"
     >
@@ -32,6 +37,18 @@
         Delete book
       </button>
     </form>
+
+    <div id="update-form" class="hidden"><%-include ("updateDetails.ejs", { book })%></div>
+    <div class="back"><a href="/">Back to Home</a></div>
     <%- include("partials/theme.ejs") %> <%- include("partials/fetchImg.ejs") %>
+    <script>
+      function showForm() {
+        document.getElementById('update-form').classList.remove('hidden');
+      }
+
+      function hideForm(){
+        document.getElementById('update-form').classList.add('hidden');
+      }
+    </script>
   </body>
 </html>
