@@ -1,0 +1,42 @@
+h1 {
+  text-align: center;
+  padding: 2rem 0px;
+  background-color: var(--headerbg);
+}
+
+ul {
+  margin-top: 20px;
+  list-style-type: none;
+  text-align: center;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  display: inline-block;
+  text-decoration: underline;
+  padding: 5px;
+}
+a:hover {
+  color: #2980b9;
+}
+
+.back {
+  text-align: center;
+}
+
+a[href="/"] {
+  text-decoration: none;
+  margin-top: 2rem;
+  color: white;
+  font-weight: 500;
+  background-color: var(--bttnbg);
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+a[href="/"]:hover {
+  background-color: cadetblue;
+}

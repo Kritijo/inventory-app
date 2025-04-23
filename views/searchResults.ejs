@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/searchResults.css" />
+    <title>Search Results</title>
+  </head>
+  <body>
+    <h1>Search Results</h1>
+
+    <ul>
+      <% books.forEach(book => { %>
+      <li>
+        <a href="/book/<%= book.id %>">
+          <strong><%= book.title %></strong> by <%= book.author %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+
+    <div class="back"><a href="/">Back to Home</a></div>
+    <%- include("partials/theme.ejs") %>
+  </body>
+</html>
