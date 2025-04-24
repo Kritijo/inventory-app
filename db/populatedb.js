@@ -16,6 +16,14 @@ CREATE TABLE IF NOT EXISTS genres (
   id SERIAL PRIMARY KEY,
   name TEXT UNIQUE NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS book_genre(
+  book_id INTEGER NOT NULL,
+  genre_id INTEGER NOT NULL,
+  PRIMARY KEY (book_id, genre_id),
+  FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
+  FOREIGN KEY (genre_id) REFERENCES genres(id) ON DELETE CASCADE
+)
 `;
 
 async function main() {
