@@ -11,7 +11,11 @@ async function getAllGenres() {
 }
 
 async function addBook(title) {
-    await pool.query("INSERT INTO books (title) VALUES ($1)", [title]);
+    const result = await pool.query(
+        "INSERT INTO books (title) VALUES ($1) RETURNING id",
+        [title]
+    );
+    return result.rows[0].id;
 }
 
 async function addGenre(name) {
@@ -30,17 +34,17 @@ async function getBookByName(name) {
         "SELECT * FROM books WHERE title ILIKE $1",
         [`${name}%`]
     );
-    return rows[0];
+    return rows;
 }
 
 async function deleteBook(id) {
     await pool.query("DELETE FROM books WHERE id=$1", [id]);
 }
 
-async function updateBook(id, title, author, desc) {
+async function updateBook(id, title, author, description) {
     await pool.query(
-        "UPDATE books SET title = $1, author = $2, desc = $3 WHERE id = $4",
-        [title, author, desc, id]
+        "UPDATE books SET title = $1, author = $2, description = $3 WHERE id = $4",
+        [title, author, description, id]
     );
 }
 

@@ -8,8 +8,8 @@ exports.home = async (req, res) => {
 
 exports.addNewBook = async (req, res) => {
     const title = req.body.title;
-    await db.addBook(title);
-    res.redirect("/");
+    const id = await db.addBook(title);
+    res.redirect(`/book/${id}`);
 };
 
 exports.addNewGenre = async (req, res) => {
@@ -30,15 +30,32 @@ exports.viewBookDetails = async (req, res) => {
 
 exports.searchBook = async (req, res) => {
     const name = req.query.name;
-    const book = await db.getBookByName(name);
-    if (!book) {
+    const books = await db.getBookByName(name);
+    if (!books || books.length === 0) {
         return res.status(404).render("partials/error");
     }
-    res.render("bookDetails", { book });
+    if (books.length === 1) {
+        res.render("bookDetails", { book: books[0] });
+    } else {
+        res.render("searchResults", { books });
+    }
 };
 
 exports.deleteBook = async (req, res) => {
     const id = parseInt(req.params.id);
     await db.deleteBook(id);
     res.redirect("/");
+};
+
+exports.getBook = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const book = await db.getBookById(id);
+    res.render("updateDetails", { book });
+};
+
+exports.updateBook = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const form = req.body;
+    await db.updateBook(id, form.title, form.author, form.description);
+    res.redirect(`/book/${id}`);
 };
