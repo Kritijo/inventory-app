@@ -1,4 +1,4 @@
-const pool = require("./pool");
+const pool = require("../pool");
 
 async function getAllBooks() {
     const { rows } = await pool.query("SELECT * FROM books");
@@ -16,10 +16,6 @@ async function addBook(title) {
         [title]
     );
     return result.rows[0].id;
-}
-
-async function addGenre(name) {
-    await pool.query("INSERT INTO genres (name) VALUES ($1)", [name]);
 }
 
 async function getBookById(id) {
@@ -52,7 +48,6 @@ module.exports = {
     getAllBooks,
     getAllGenres,
     addBook,
-    addGenre,
     getBookById,
     getBookByName,
     deleteBook,
