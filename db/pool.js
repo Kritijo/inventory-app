@@ -11,7 +11,7 @@ module.exports = new Pool({
         ? {
               rejectUnauthorized: false,
               ca: fs
-                  .readFileSync(path.join(__dirname, "ca-certificate.crt"))
+                  .readFileSync(path.join(__dirname, "..", "ca.pem"))
                   .toString(),
           }
         : false,
