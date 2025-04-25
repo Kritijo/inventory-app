@@ -24,22 +24,23 @@
       'numeric', month: 'short', day: 'numeric' }) %>
     </p>
 
-    <button class="bttn-1" onclick="showForm()">
-      Update Details
-    </button>
-
-    <form
-      action="/book/<%= book.id %>/delete"
-      method="POST"
-      style="display: inline"
-    >
-      <button
-        onclick="return confirm('Are you sure you want to delete <%= book.title %>?')"
-        type="submit"
-      >
-        Delete book
+    <div>
+      <button class="bttn-1" onclick="showForm()">
+        Update Details
       </button>
-    </form>
+      <form
+        action="/book/<%= book.id %>/delete"
+        method="POST"
+        style="display: inline"
+      >
+        <button
+          onclick="return confirm('Are you sure you want to delete <%= book.title %>?')"
+          type="submit"
+        >
+          Delete book
+        </button>
+      </form>
+    </div>
 
     <div id="update-form" class="hidden"><%- include ("updateDetails.ejs", { book, allGenres, genres })%></div>
     <div class="back"><a href="/">Back to Home</a></div>
