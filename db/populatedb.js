@@ -36,7 +36,9 @@ async function main() {
         ssl: isProduction
             ? {
                   rejectUnauthorized: false,
-                  ca: fs.readFileSync("/path/to/ca-certificate.crt").toString(),
+                  ca: fs
+                      .readFileSync(path.join(__dirname, "ca-certificate.crt"))
+                      .toString(),
               }
             : false,
     });
