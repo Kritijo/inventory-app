@@ -9,3 +9,16 @@ exports.addGenre = async (req, res) => {
     }
     res.redirect("/");
 };
+
+exports.getGenre = async (req, res) => {
+    const id = req.params.id;
+    const books = await db.getBookInGenre(id);
+    const genre = await db.getGenreById(id);
+    res.render("genreBooks", { books, genre });
+};
+
+exports.deleteGenre = async (req, res) => {
+    const id = req.params.id;
+    await db.deleteGenre(id);
+    res.redirect("/");
+};

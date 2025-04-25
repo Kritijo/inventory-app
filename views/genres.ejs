@@ -5,6 +5,9 @@
 </form>
 <ul>
   <% genres.forEach(genre => { %>
-  <li>• <%= genre.name %></li>
+  <li>
+    • 
+    <a href="genre/<%=genre.id%>%>"><%= genre.name %></a>
+  </li>
   <% }) %>
 </ul>

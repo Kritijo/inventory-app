@@ -9,5 +9,7 @@ indexRouter.get("/", inventoryController.home);
 indexRouter.post("/newbook", bookController.addBook);
 indexRouter.post("/newgenre", genreController.addGenre);
 indexRouter.get("/search", inventoryController.searchBook);
+indexRouter.get("/genre/:id", genreController.getGenre);
+indexRouter.post("/genre/:id/delete", genreController.deleteGenre);
 
 module.exports = indexRouter;

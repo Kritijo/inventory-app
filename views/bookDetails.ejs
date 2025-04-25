@@ -16,6 +16,9 @@
     <p><strong>Author:</strong> <%= book.author || "Unknown Author" %></p>
     <p><strong>Description:</strong> 
       <%= book.description || "No description available." %></p>
+    <p><strong>Genre:</strong>
+      <%= genres.map(genre=>genre.name).join(', ') || "Not added yet." %>
+    </p>
     <p>
       <strong>Added:</strong> <%= book.added.toLocaleDateString('en-US', { year:
       'numeric', month: 'short', day: 'numeric' }) %>
@@ -38,7 +41,7 @@
       </button>
     </form>
 
-    <div id="update-form" class="hidden"><%- include ("updateDetails.ejs", { book, genres })%></div>
+    <div id="update-form" class="hidden"><%- include ("updateDetails.ejs", { book, allGenres, genres })%></div>
     <div class="back"><a href="/">Back to Home</a></div>
     
     <%- include("partials/theme.ejs") %> <%- include("partials/fetchImg.ejs") %>

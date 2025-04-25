@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/searchResults.css" />
+    <title>Books in Genre</title>
+</head>
+<body>
+    <h1>Books in Genre: <%= genre.name %></h1>
+
+    <ul>
+      <% books.forEach(book => { %>
+      <li>
+        <a href="/book/<%= book.id %>">
+          <strong><%= book.title %></strong> by <%= book.author %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+
+    <form
+      action="/genre/<%=genre.id%>/delete%>"
+      method="POST"
+    >
+      <button
+        onclick="return confirm('Are you sure you want to delete <%= genre.name %> genre?')"
+        type="submit"
+      >
+        Delete genre
+      </button>
+    </form>
+
+    <div class="back"><a href="/">Back to Home</a></div>
+    <%- include("partials/theme.ejs") %>
+</body>
+</html>

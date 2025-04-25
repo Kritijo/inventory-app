@@ -10,8 +10,9 @@ exports.home = async (req, res) => {
 exports.viewBookDetails = async (req, res) => {
     const id = parseInt(req.params.id);
     const book = await db.getBookById(id);
-    const genres = await gdb.getAllGenres();
-    res.render("bookDetails", { book, genres });
+    const allGenres = await gdb.getAllGenres();
+    const genres = await gdb.getGenreInBook(id);
+    res.render("bookDetails", { book, allGenres, genres });
 };
 
 exports.searchBook = async (req, res) => {

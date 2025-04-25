@@ -7,9 +7,12 @@
   <input id="description" value="<%=book.description%>" name="description" />
   
   <label for="genres">Genre</label>
-  <select id="genres" name="genres" multiple>
-  <%genres.forEach(genre=>{%>
-    <option value="<%=genre.id%>%>"><%=genre.name%></option>
+  <select id="genres" name="genres" multiple required>
+  <%allGenres.forEach(g=>{%>
+    <option value="<%= g.id %>" 
+      <%= genres.some(selected => String(selected.id) === String(g.id)) ? "selected" : "" %>>
+      <%= g.name %>
+    </option>
   <%})%>
   </select>
 
