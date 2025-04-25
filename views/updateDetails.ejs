@@ -1,10 +1,10 @@
 <form action="/book/<%= book.id %>/update" method="POST">
   <label for="title">Title</label>
-  <input id="title" value="<%=book.title%>" name="title" required />
+  <input id="title" value="<%=book.title%>" name="title" type="text" maxlength="50" required />
   <label for="author">Author</label>
-  <input id="author" value="<%=book.author%>" name="author" />
+  <input id="author" value="<%=book.author%>" type="text" maxlength="30" name="author" />
   <label for="description">Description</label>
-  <input id="description" value="<%=book.description%>" name="description" />
+  <input id="description" value="<%=book.description%>" name="description" type="text" maxlength="500" />
   
   <label for="genres">Genre</label>
   <select id="genres" name="genres" multiple required>

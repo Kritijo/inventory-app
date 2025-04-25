@@ -47,6 +47,9 @@ li > a {
   text-decoration: none;
   cursor: pointer;
 }
+.genre-ul {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
 
 @media (max-width: 800px) {
   .add-form > input {
