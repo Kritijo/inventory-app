@@ -1,4 +1,5 @@
 require("dotenv").config();
+const fs = require("fs");
 const isProduction = process.env.NODE_ENV === "production";
 
 const { Client } = require("pg");
