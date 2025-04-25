@@ -1,15 +1,17 @@
 const db = require("../db/queries/bookQueries");
+const gdb = require("../db/queries/genreQueries");
 
 exports.home = async (req, res) => {
     const books = await db.getAllBooks();
-    const genres = await db.getAllGenres();
+    const genres = await gdb.getAllGenres();
     res.render("index", { books, genres });
 };
 
 exports.viewBookDetails = async (req, res) => {
     const id = parseInt(req.params.id);
     const book = await db.getBookById(id);
-    res.render("bookDetails", { book });
+    const genres = await gdb.getAllGenres();
+    res.render("bookDetails", { book, genres });
 };
 
 exports.searchBook = async (req, res) => {
@@ -24,5 +26,3 @@ exports.searchBook = async (req, res) => {
         res.render("searchResults", { books });
     }
 };
-
-

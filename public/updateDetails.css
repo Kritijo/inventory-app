@@ -1,5 +1,5 @@
 #update-form {
-  min-width: 250px;
+  min-width: 300px;
   position: fixed;
   top: 20%;
   left: 50%;
@@ -49,6 +49,16 @@ input {
 }
 :root.dark input {
   border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+select {
+  width: 100%;
+  background-color: var(--inputbg);
+}
+
+option {
+  padding: 0.2rem 0.85rem;
+  background-color: var(--inputbg);
 }
 
 #update-form button {

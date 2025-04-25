@@ -5,11 +5,6 @@ async function getAllBooks() {
     return rows;
 }
 
-async function getAllGenres() {
-    const { rows } = await pool.query("SELECT * FROM genres");
-    return rows;
-}
-
 async function addBook(title) {
     const result = await pool.query(
         "INSERT INTO books (title) VALUES ($1) RETURNING id",
@@ -46,7 +41,6 @@ async function updateBook(id, title, author, description) {
 
 module.exports = {
     getAllBooks,
-    getAllGenres,
     addBook,
     getBookById,
     getBookByName,

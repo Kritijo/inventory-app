@@ -38,17 +38,10 @@
       </button>
     </form>
 
-    <div id="update-form" class="hidden"><%-include ("updateDetails.ejs", { book })%></div>
+    <div id="update-form" class="hidden"><%- include ("updateDetails.ejs", { book, genres })%></div>
     <div class="back"><a href="/">Back to Home</a></div>
+    
     <%- include("partials/theme.ejs") %> <%- include("partials/fetchImg.ejs") %>
-    <script>
-      function showForm() {
-        document.getElementById('update-form').classList.remove('hidden');
-      }
-
-      function hideForm(){
-        document.getElementById('update-form').classList.add('hidden');
-      }
-    </script>
+    <%- include("partials/toggleForm.ejs")%>
   </body>
 </html>
