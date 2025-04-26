@@ -33,7 +33,9 @@ async function main() {
         connectionString: isProduction
             ? process.env.DB_URL
             : process.env.DATABASE_URL,
-        ssl: isProduction ? { rejectUnauthorized: false } : false,
+        ssl: isProduction
+            ? { require: true, rejectUnauthorized: false }
+            : false,
     });
     await client.connect();
     await client.query(SQL);
