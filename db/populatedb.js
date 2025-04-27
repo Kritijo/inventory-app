@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE_URL = process.env.EXTERNAL_URL || process.env.DATABASE_URL;
 
 const { Client } = require("pg");
 
@@ -59,7 +59,12 @@ WHERE b.title = 'Becoming';
 
 async function main() {
     console.log("seeding...");
-    const client = new Client({ connectionString: DATABASE_URL });
+    const client = new Client({
+        connectionString: DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    });
     await client.connect();
     await client.query(SQL);
     await client.end();
