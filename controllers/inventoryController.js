@@ -22,7 +22,8 @@ exports.searchBook = async (req, res) => {
         return res.status(404).render("partials/error");
     }
     if (books.length === 1) {
-        res.render("bookDetails", { book: books[0] });
+        const id = books[0].id;
+        return exports.viewBookDetails({ params: { id } }, res);
     } else {
         res.render("searchResults", { books });
     }
