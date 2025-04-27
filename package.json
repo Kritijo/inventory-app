@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "seed": "NODE_ENV=development node db/populatedb.js",
-    "seed:prod": "NODE_ENV=production node db/populatedb.js"
+    "watch": "node --watch app.js",
+    "seed": "node db/populatedb.js"
   },
   "keywords": [],
   "author": "",
