@@ -1,13 +1,25 @@
 const db = require("../db/queries/bookQueries");
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 exports.addBook = async (req, res) => {
-    const title = req.body.title;
+    const { title, adminPassword } = req.body.title;
+    if (adminPassword !== ADMIN_PASSWORD) {
+        return res.status(403).render("partials/error", {
+            errorMessage: "Forbidden: Incorrect password.",
+        });
+    }
     const id = await db.addBook(title);
     res.redirect(`/book/${id}`);
 };
 
 exports.deleteBook = async (req, res) => {
     const id = parseInt(req.params.id);
+    const adminPassword = req.body.adminPassword;
+    if (adminPassword !== ADMIN_PASSWORD) {
+        return res.status(403).render("partials/error", {
+            errorMessage: "Forbidden: Incorrect password.",
+        });
+    }
     await db.deleteBook(id);
     res.redirect("/");
 };
@@ -20,7 +32,13 @@ exports.updateBook = async (req, res) => {
     } = require("../db/queries/genreQueries");
 
     const id = parseInt(req.params.id);
-    const { title, author, description, genres } = req.body;
+    const { title, author, description, genres, adminPassword } = req.body;
+
+    if (adminPassword !== ADMIN_PASSWORD) {
+        return res.status(403).render("partials/error", {
+            errorMessage: "Forbidden: Incorrect password.",
+        });
+    }
 
     await db.updateBook(id, title, author, description);
 

@@ -19,7 +19,11 @@ exports.searchBook = async (req, res) => {
     const name = req.query.name;
     const books = await db.getBookByName(name);
     if (!books || books.length === 0) {
-        return res.status(404).render("partials/error");
+        return res
+            .status(404)
+            .render("partials/error", {
+                errorMessage: "Oops, no such book found!",
+            });
     }
     if (books.length === 1) {
         const id = books[0].id;

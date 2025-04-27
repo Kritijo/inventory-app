@@ -11,22 +11,26 @@
 .add-form {
   margin: 20px auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  gap: 5px;
   font-size: 16px;
 }
 .add-form > input {
-  width: 50%;
   padding: 5px 10px;
   font-size: 1rem;
   background-color: #fff;
   border-radius: 5px;
   border: none;
   box-shadow: var(--shadow);
-  margin-right: 8px;
 }
 :root.dark .add-form > input {
   border: 1px solid rgba(255, 255, 255, 0.4);
   background-color: var(--inputbg);
+}
+.add-form > button {
+  width: 100px;
 }
 
 h3 {
@@ -51,11 +55,12 @@ li > a {
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
 }
 
-@media (max-width: 800px) {
-  .add-form > input {
-    width: 50%;
+@media (max-width: 700px) {
+  .add-form {
+    flex-direction: column;
   }
   .add-form > button {
+    align-self: center;
     font-size: small;
   }
 }

@@ -1,0 +1,9 @@
+<script>
+  function submitDeleteForm(form, bookTitle) {
+    const password = prompt(`Enter admin password to delete "${bookTitle}"`);
+    if (password === null) return false;
+
+    form.querySelector('input[name="adminPassword"]').value = password;
+    return true;
+  }
+</script>
