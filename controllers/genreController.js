@@ -2,7 +2,7 @@ const db = require("../db/queries/genreQueries");
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 exports.addGenre = async (req, res) => {
-    const { name, adminPassword } = req.body.name;
+    const { name, adminPassword } = req.body;
     if (adminPassword !== ADMIN_PASSWORD) {
         return res.status(403).render("partials/error", {
             errorMessage: "Forbidden: Incorrect password.",

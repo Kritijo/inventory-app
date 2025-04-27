@@ -2,7 +2,7 @@ const db = require("../db/queries/bookQueries");
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 exports.addBook = async (req, res) => {
-    const { title, adminPassword } = req.body.title;
+    const { title, adminPassword } = req.body;
     if (adminPassword !== ADMIN_PASSWORD) {
         return res.status(403).render("partials/error", {
             errorMessage: "Forbidden: Incorrect password.",
