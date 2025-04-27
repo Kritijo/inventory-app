@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const isProduction = process.env.NODE_ENV === "production";
+const DATABASE_URL = process.env.DATABASE_URL;
 
 const { Client } = require("pg");
 
@@ -29,12 +29,7 @@ CREATE TABLE IF NOT EXISTS book_genre(
 
 async function main() {
     console.log("seeding...");
-    const client = new Client({
-        connectionString: isProduction
-            ? process.env.DB_URL
-            : process.env.DATABASE_URL,
-        ssl: isProduction ? { rejectUnauthorized: true } : false,
-    });
+    const client = new Client({ DATABASE_URL });
     await client.connect();
     await client.query(SQL);
     await client.end();
